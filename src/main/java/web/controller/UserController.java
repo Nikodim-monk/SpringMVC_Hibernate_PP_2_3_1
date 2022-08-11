@@ -2,27 +2,33 @@ package web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import web.model.User;
+import org.springframework.web.bind.annotation.*;
 import web.DAO.UserDAO;
+import web.model.User;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 @Controller
 public class UserController {
+    UserDAO userDAO=new UserDAO();
 
-    @GetMapping("/users")
-    public String printCars(HttpServletRequest request, ModelMap model) {
-        UserDAO user = new UserDAO();
-        String count = request.getParameter("count");
-        if ((count == null) || (Byte.parseByte(count) > 5)) {
-            count = "5";
-        }
-        List<User> users = user.getCars(Byte.parseByte(count));
+    @GetMapping("/")
+    public String printAllUsers(ModelMap model) {
+        model.addAttribute("users", userDAO.getAllUsers());
+        return "usersAll";
+    }
 
-        model.addAttribute("users",users);
-        return "users";
-}
+    @GetMapping("/{id}")
+    public String printUserById(ModelMap model, @PathVariable ("id") int id) {
+        model.addAttribute("users", userDAO.getUserById(id));
+        return "user";
+    }
+
+    @PostMapping("/new")
+    public String createNewUser(@ModelAttribute ("User") User user) {
+        userDAO.addNewUser(user);
+        return "redirect:/";
+    }
+
 
 }

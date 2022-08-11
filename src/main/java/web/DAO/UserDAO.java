@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO {
-    private static long SCH;
+    private long SCH;
     private List<User> users = new ArrayList<>();
 
     {
@@ -17,7 +17,16 @@ public class UserDAO {
         users.add(new User(++SCH, "John", (byte) 36));
     }
 
-    public List<User> getCars(byte count) {
-        return users.subList(0, count);
+    public List<User> getAllUsers() {
+        return users;
     }
+    public User getUserById(int id) {
+        return users.get(id-1);
+    }
+
+    public void addNewUser(User user) {
+        user.setId(++SCH);
+        users.add(user);
+    }
+
 }
