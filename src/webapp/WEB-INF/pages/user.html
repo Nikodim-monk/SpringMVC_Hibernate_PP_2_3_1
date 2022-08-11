@@ -5,10 +5,15 @@
     <title>User</title>
 </head>
 <body>
-<div th:each="user : ${users}">
-    <a th:text="${user.getId()}"></a>
-    <a th:text="${user.getName()}"></a>
-    <a th:text="${user.getAge()}"></a>
-</div>
+<form th:method="PATCH" th:action="@{{id}(id=${userById.getId()})}" th:object="${userById}">
+    <label for="name">Новое имя:</label>
+    <input type="text" th:field="*{name}" id="name">
+    <br/>
+    <label for="age">Возраст:</label>
+    <input type="text" th:field="*{age}" id="age">
+    <br/>
+    <input type="submit" value="Обновить"/>
+</form>
+
 </body>
 </html>

@@ -20,7 +20,7 @@ public class UserController {
 
     @GetMapping("/{id}")
     public String printUserById(ModelMap model, @PathVariable ("id") int id) {
-        model.addAttribute("users", userDAO.getUserById(id));
+        model.addAttribute("userById", userDAO.getUserById(id));
         return "user";
     }
 
@@ -30,5 +30,9 @@ public class UserController {
         return "redirect:/";
     }
 
-
+    @PatchMapping("/{id}")
+    public String updateUser(@ModelAttribute ("userById") User user, @PathVariable ("id") int id) {
+//        userDAO.updateUser(user);
+        return "redirect:/";
+    }
 }

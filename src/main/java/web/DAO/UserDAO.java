@@ -29,4 +29,6 @@ public class UserDAO {
         users.add(user);
     }
 
+    public void updateUser(User user) {
+    }
 }

@@ -21,15 +21,14 @@
             <td th:text="${user.getAge()}"></td>
         </tr>
     </div>
-
 </table>
 <br/>
-<form method="POST" action="/new" object="User">
-    <label for="Name">Новое имя:</label>
-    <input type="text" name="Name" id="Name" >
+<form method="POST" action="/new" object="userNew">
+    <label for="name">Новое имя:</label>
+    <input type="text" name="name" id="name">
     <br/>
-    <label for="Age">Возраст:</label>
-    <input type="text" name="Age" id="Age">
+    <label for="age">Возраст:</label>
+    <input type="text" name="age" id="age">
     <br/>
     <input type="submit" value="Записать"/>
 </form>
