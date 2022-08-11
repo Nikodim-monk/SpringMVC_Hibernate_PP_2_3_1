@@ -25,14 +25,20 @@ public class UserController {
     }
 
     @PostMapping("/new")
-    public String createNewUser(@ModelAttribute ("User") User user) {
+    public String createNewUser(@ModelAttribute ("userNew") User user) {
         userDAO.addNewUser(user);
         return "redirect:/";
     }
 
     @PatchMapping("/{id}")
     public String updateUser(@ModelAttribute ("userById") User user, @PathVariable ("id") int id) {
-//        userDAO.updateUser(user);
+        userDAO.updateUser(user,id);
+        return "redirect:/";
+    }
+
+    @DeleteMapping("/{id}")
+    public String deleteUser(@PathVariable ("id") int id) {
+        userDAO.UserDelete(id);
         return "redirect:/";
     }
 }
