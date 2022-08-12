@@ -1,6 +1,10 @@
 package web.model;
 
+
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -10,15 +14,17 @@ public class User {
     @Column(name = "UserID")
     private int Id;
     @Column(name = "UserName")
-//    @NotEmpty
+    @NotEmpty(message = "Не может быть пустым")
+    @Size(min = 1, max = 15, message = "Не более 15 символов")
     private String Name;
     @Column(name = "UserAge")
-    private byte Age;
+    @Min(value = 0, message = "P")
+    private int Age;
 
     public User() {
     }
 
-    public User(String name, byte age) {
+    public User(String name, int age) {
         this.Name = name;
         this.Age = age;
     }
@@ -39,11 +45,11 @@ public class User {
         Name = name;
     }
 
-    public byte getAge() {
+    public int getAge() {
         return Age;
     }
 
-    public void setAge(byte age) {
+    public void setAge(int age) {
         this.Age = age;
     }
 }

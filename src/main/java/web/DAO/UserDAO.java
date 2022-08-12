@@ -18,11 +18,11 @@ public class UserDAO {
             session.createSQLQuery("CREATE TABLE IF NOT EXISTS users " +
                             "(UserID INT PRIMARY KEY AUTO_INCREMENT, UserName varchar(15), UserAge int)")
                     .addEntity(User.class).executeUpdate();
-//            session.save(new User( "Андрей", (byte) 46));
-//            session.save(new User( "Иван", (byte) 50));
-//            session.save(new User( "Сидор", (byte) 54));
-//            session.save(new User( "Michael", (byte) 30));
-//            session.save(new User("John", (byte) 36));
+//            session.save(new User( "Андрей", 46));
+//            session.save(new User( "Иван",  50));
+//            session.save(new User( "Сидор",  54));
+//            session.save(new User( "Michael",  30));
+//            session.save(new User("John",  36));
             session.getTransaction().commit();
         } catch (HibernateException e) {
             throw new RuntimeException(e);
