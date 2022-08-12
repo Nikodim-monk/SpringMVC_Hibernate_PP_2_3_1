@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import web.DAO.UserDAO;
 import web.model.User;
 
-import javax.servlet.http.HttpServletRequest;
-
 @Controller
 public class UserController {
     UserDAO userDAO=new UserDAO();
