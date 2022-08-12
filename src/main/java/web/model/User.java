@@ -8,8 +8,9 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "UserID")
-    private Long Id;
+    private int Id;
     @Column(name = "UserName")
+//    @NotEmpty
     private String Name;
     @Column(name = "UserAge")
     private byte Age;
@@ -22,11 +23,11 @@ public class User {
         this.Age = age;
     }
 
-    public Long getId() {
+    public int getId() {
         return Id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.Id = id;
     }
 

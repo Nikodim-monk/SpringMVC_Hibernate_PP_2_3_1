@@ -40,7 +40,7 @@ public class UserDAO {
         }
         return users;
     }
-    public User getUserById(long id) {
+    public User getUserById(int id) {
         User user = null;
         try (Session session = sessionFactory.getCurrentSession()) {
             try {
@@ -65,7 +65,7 @@ public class UserDAO {
             }
         }
     }
-    public void updateUser(User user, long id) {
+    public void updateUser(User user, int id) {
         try (Session session = sessionFactory.getCurrentSession()) {
             try {
                 session.beginTransaction();
@@ -79,7 +79,7 @@ public class UserDAO {
         }
     }
 
-    public void UserDelete(long id) {
+    public void UserDelete(int id) {
         try (Session session = sessionFactory.getCurrentSession()) {
             try {
                 session.beginTransaction();
