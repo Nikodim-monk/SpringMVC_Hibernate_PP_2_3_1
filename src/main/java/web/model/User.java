@@ -17,8 +17,7 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String name, byte age) {
-        this.Id = id;
+    public User(String name, byte age) {
         this.Name = name;
         this.Age = age;
     }

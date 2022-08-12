@@ -29,7 +29,7 @@ public class UserController {
     }
 
     @PatchMapping("/{id}")
-    public String updateUser(@ModelAttribute ("userById") User user, @PathVariable ("id") int id) {
+    public String updateUser(@ModelAttribute ("userById") User user, @PathVariable ("id") long id) {
         userDAO.updateUser(user,id);
         return "redirect:/";
     }
