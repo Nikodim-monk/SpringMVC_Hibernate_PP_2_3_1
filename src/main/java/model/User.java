@@ -1,28 +1,33 @@
-package web.model;
+package model;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "users")
 public class User {
-
-    private Long id;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long Id;
+    @Column(name = "name")
     private String Name;
-
-    private byte age;
+    @Column(name = "age")
+    private byte Age;
 
     public User() {
     }
 
     public User(Long id, String name, byte age) {
-        this.id = id;
+        this.Id = id;
         Name = name;
-        this.age = age;
+        this.Age = age;
     }
 
     public Long getId() {
-        return id;
+        return Id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.Id = id;
     }
 
     public String getName() {
@@ -34,10 +39,10 @@ public class User {
     }
 
     public byte getAge() {
-        return age;
+        return Age;
     }
 
     public void setAge(byte age) {
-        this.age = age;
+        this.Age = age;
     }
 }
