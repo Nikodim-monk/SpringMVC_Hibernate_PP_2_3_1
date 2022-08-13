@@ -21,23 +21,21 @@ public class UserController {
 
     @GetMapping("/{id}")
     public String printUserById(ModelMap model, @PathVariable("id") int id) {
-        model.addAttribute("userById", userDAO.getUserById(id));
+        model.addAttribute("user", userDAO.getUserById(id));
         return "user";
     }
 
     @PostMapping("/new")
-    public String createNewUser(@ModelAttribute("userNew") @Valid User user, BindingResult bindingResult) {
-        if (bindingResult.hasErrors())
-            return "usersAll";
+    public String createNewUser(@ModelAttribute("user") @Valid User user,BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){return "redirect:/";}
         userDAO.addNewUser(user);
         return "redirect:/";
     }
 
     @PatchMapping("/{id}")
-    public String updateUser(@ModelAttribute("userById") @Valid User user, BindingResult bindingResult,
+    public String updateUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult,
                              @PathVariable("id") int id) {
-        if (bindingResult.hasErrors())
-            return "usersAll";
+        if(bindingResult.hasErrors()){return "redirect:/{id}";}
         userDAO.updateUser(user, id);
         return "redirect:/";
     }

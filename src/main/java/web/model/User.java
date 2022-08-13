@@ -14,11 +14,11 @@ public class User {
     @Column(name = "UserID")
     private int Id;
     @Column(name = "UserName")
-    @NotEmpty(message = "Не может быть пустым")
-    @Size(min = 1, max = 15, message = "Не более 15 символов")
+    @NotEmpty(message = "Не может быть пустым ggggggg")
+    @Size(min = 1, max = 15, message = "Не более 15 символов ggggggggg")
     private String Name;
     @Column(name = "UserAge")
-    @Min(value = 0, message = "P")
+    @Min(value = 0, message = "gggggggg")
     private int Age;
 
     public User() {
@@ -42,7 +42,7 @@ public class User {
     }
 
     public void setName(String name) {
-        Name = name;
+        this.Name = name;
     }
 
     public int getAge() {

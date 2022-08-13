@@ -18,11 +18,13 @@ public class UserDAO {
             session.createSQLQuery("CREATE TABLE IF NOT EXISTS users " +
                             "(UserID INT PRIMARY KEY AUTO_INCREMENT, UserName varchar(15), UserAge int)")
                     .addEntity(User.class).executeUpdate();
-//            session.save(new User( "Андрей", 46));
-//            session.save(new User( "Иван",  50));
-//            session.save(new User( "Сидор",  54));
-//            session.save(new User( "Michael",  30));
-//            session.save(new User("John",  36));
+
+//            session.save(new User("Андрей", 46));
+//            session.save(new User("Иван", 50));
+//            session.save(new User("Сидор", 54));
+//            session.save(new User("Michael", 30));
+//            session.save(new User("John", 36));
+
             session.getTransaction().commit();
         } catch (HibernateException e) {
             throw new RuntimeException(e);
@@ -40,6 +42,7 @@ public class UserDAO {
         }
         return users;
     }
+
     public User getUserById(int id) {
         User user = null;
         try (Session session = sessionFactory.getCurrentSession()) {
@@ -53,6 +56,7 @@ public class UserDAO {
         }
         return user;
     }
+
     public void addNewUser(User user) {
         try (Session session = sessionFactory.getCurrentSession()) {
             try {
@@ -65,6 +69,7 @@ public class UserDAO {
             }
         }
     }
+
     public void updateUser(User user, int id) {
         try (Session session = sessionFactory.getCurrentSession()) {
             try {
